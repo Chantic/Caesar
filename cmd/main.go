@@ -32,6 +32,7 @@ func main() {
 	} else {
 		fmt.Println(caesar.Encrypt(*text, *shifts))
 		fmt.Println(caesar.Decrypt(*text1, *shifts))
+
 	}
 	//fmt.Println(caesar.Encrypt(*text, *shifts))
 	//fmt.Println(caesar.Decrypt(*text1, *shifts))
@@ -39,15 +40,21 @@ func main() {
 func valid(data string, alphabet string) bool {
 	dataList := strings.Split(data, "")
 	alphabetList := strings.Split(alphabet, "")
-	for _, value1 := range dataList {
-		for _, value2 := range alphabetList {
-			//log.Printf("value:%v, value2:%v\n", value1, value2)
-			if value1 == value2 {
 
-				return true
+	for _, inputS := range dataList {
+		var exist bool = false
+
+		for _, alphabetS := range alphabetList {
+			if inputS == alphabetS {
+				exist = true
+				continue
 			}
 		}
 
+		if !exist {
+			return false
+		}
 	}
-	return false
+
+	return true
 }
